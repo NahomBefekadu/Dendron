@@ -6,7 +6,8 @@ useKatex: true
 dev:
   enablePreviewV2: true
 site:
-  siteUrl: https://nahombefekadu.github.io/Dendron/
+  assetsPrefix: /Dendron
+  siteUrl: https://nahombefekadu.github.io
   copyAssets: true
   siteHierarchies:
     - root
