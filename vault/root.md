@@ -2,7 +2,7 @@
 id: vVFnvX3AZLb21JIc7L4gm
 title: Root
 desc: ""
-updated: 1641168369381
+updated: 1641184503497
 created: 1640015760017
 ---
 
@@ -12,10 +12,4 @@ This is a collection of notes ranging from data structures and problems to speci
 
 This repository will be continually updated and maintained as knowledge base grows and aspects of languages are updated.
 
-![Tree of Knowledge](https://static.wikia.nocookie.net/gods_and_demons/images/3/37/Tree_of_the_Knowledge_of_Good_and_Evil.jpg/revision/latest/scale-to-width-down/1000?cb=20200827152526)
-
-## Lookup information
-
-[[Data Structures]]
-
-[[Cloud]]
+![](/assets/images/2022-01-02-23-34-36.png)
