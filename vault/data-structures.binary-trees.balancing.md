@@ -1,8 +1,8 @@
 ---
 id: dAIbJALaDi5GytOwdazz9
 title: Balancing
-desc: ''
-updated: 1641185266751
+desc: ""
+updated: 1641230605722
 created: 1641108315833
 ---
 
@@ -14,7 +14,7 @@ In a rotation a node is shifted up while another node is shifted down. Other nod
 
 We can also see that due to the rotation that the children of the nodes being rotated are also shifted but still stay the children of the nodes. Only thing changing the level/depth of these nodes. Thus we can see that this is a great way to balance trees as it does not matter if the node in rotation has parents. Hence we can use rotations at any level/depth within the tree.
 
-![](/assets/images/2022-01-02-23-41-37.png)
+![](/assets/images/2022-01-02-23-41-37.png){max-width: 300px}
 
 In the example below you can see that we can use rotations to make a tree that is unbalanced balanced by applying rotations.
 
