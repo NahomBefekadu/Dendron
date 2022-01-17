@@ -2,14 +2,14 @@
 id: ZH4d3O9sQRuTjxFi5k8s8
 title: Binary Tree
 desc: ""
-updated: 1641267619234
+updated: 1642439494026
 created: 1641228487802
 ---
 
-## Binary Tree Problems
+## Binary Tree Problems To Do
 
-6.  Max Path Sum In Binary Tree
-7.  Find Nodes Distance K
-8.  Iterative In-Order Traversal
-9.  Flatten Binary Tree 10. Right Siblings Node Depths
-10. Compare Leaf/leave Traversal
+- [ ] Max Path Sum In Binary Tree
+- [ ] Find Nodes Distance K
+- [ ] Iterative In-Order Traversal
+- [ ] Flatten Binary Tree 10. Right Siblings Node Depths
+- [ ] Compare Leaf/leave Traversal
