@@ -2,13 +2,13 @@
 id: njdNiInPo8blssrauwGXr
 title: Binary Search Trees
 desc: ""
-updated: 1642439749346
+updated: 1642441341115
 created: 1641268782438
 ---
 
 ## Binary Search Tree Problems To Do
 
-- [ ] Find Closest Value in BST
+- [ ]
 - [ ] BST Construction
 - [ ] Validate BST
 - [ ] BST Traversal
