@@ -2,7 +2,7 @@
 id: XGvhFkb6VwNdUDaROTdbP
 title: Dynamic Programming
 desc: ""
-updated: 1642441027836
+updated: 1644249084169
 created: 1641268828261
 ---
 
@@ -12,7 +12,6 @@ created: 1641268828261
 - [ ] Number of ways to make change
 - [ ] min number of coins for change
 - [ ] levenshtein distance
-- [ ] number of ways to traverse graph
 - [ ] max sum increasing subsequence
 - [ ] longest common subsequence
 - [ ] min number of jumps
