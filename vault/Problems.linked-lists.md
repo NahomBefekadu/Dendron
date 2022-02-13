@@ -2,7 +2,7 @@
 id: DajGakJvZiZu7osygN4yD
 title: Linked Lists
 desc: ""
-updated: 1642440134883
+updated: 1644724476423
 created: 1641268986889
 ---
 
@@ -21,3 +21,8 @@ created: 1641268986889
 - [ ] Linked List palindrome
 - [ ] Zip Linked List
 - [ ] Node swap
+
+##
+
+- Two Pointer Methods
+- Dummy head

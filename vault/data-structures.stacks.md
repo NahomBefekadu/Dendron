@@ -2,7 +2,7 @@
 id: WZ2a0ixYCPWAPCh5x1Alr
 title: Stacks
 desc: ""
-updated: 1641702421381
+updated: 1644636251536
 created: 1641160243086
 ---
 
@@ -14,7 +14,7 @@ Stacks can also have a size limit, where if data is pushed into a full stack it 
 
 Real life situation of a stack is a line at a grocery store, where the first in line is checked out, and new comers are last in.
 
-Below we can see that we can create a stack from a linked list.
+Below we can see that we can create a stack from a linked list, but we can also create a stack from an array as well.
 
 ```javascript
 const LinkedList = require("./LinkedList");
