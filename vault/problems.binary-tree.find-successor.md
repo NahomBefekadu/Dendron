@@ -2,7 +2,7 @@
 id: nxnz8au39VJc43CWpp9sg
 title: Find Successor
 desc: ""
-updated: 1641267892845
+updated: 1644895618064
 created: 1641254011535
 ---
 
@@ -80,3 +80,7 @@ function inOrderTraversal(tree, out) {
 
 - [[data-structures.binary-trees.traverse]]
 - [[data-structures.recursion]]
+
+## Patterns
+
+- DFS

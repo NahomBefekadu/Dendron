@@ -2,7 +2,7 @@
 id: G1WYVj4RLmhMPi8bM57JW
 title: zipper-linked-list
 desc: ""
-updated: 1644606984083
+updated: 1644896534456
 created: 1644606177093
 ---
 
@@ -62,3 +62,10 @@ Now we can solve this question using two pointers to keep track of the two linke
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator

@@ -2,7 +2,7 @@
 id: BZmdlSFmAqDwFchdgNOpq
 title: create-linked-list
 desc: ""
-updated: 1644719917594
+updated: 1644896425788
 created: 1644719423511
 ---
 
@@ -51,3 +51,10 @@ const createLinkedList = (values) => {
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator

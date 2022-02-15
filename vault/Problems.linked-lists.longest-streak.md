@@ -2,7 +2,7 @@
 id: H4RlUx7zA12YiZlshc6W6
 title: longest-streak
 desc: ""
-updated: 1644718472952
+updated: 1644896495768
 created: 1644717894801
 ---
 
@@ -60,3 +60,11 @@ return max;
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator
+- Map/Set

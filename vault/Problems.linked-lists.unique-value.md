@@ -2,7 +2,7 @@
 id: zFSvU97guIdPgCPqgy78g
 title: unique-value
 desc: ""
-updated: 1644717674656
+updated: 1644896525353
 created: 1644717060585
 ---
 
@@ -65,3 +65,10 @@ const isUniqueValueList = (head) => {
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Map/Set

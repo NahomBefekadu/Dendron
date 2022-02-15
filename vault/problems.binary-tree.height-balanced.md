@@ -2,7 +2,7 @@
 id: Cr43aZC95xv3USYVzz0QY
 title: Height Balanced
 desc: ""
-updated: 1641267522711
+updated: 1644895663188
 created: 1641267289854
 ---
 
@@ -103,5 +103,9 @@ function helper(node) {
 
 ## Concepts
 
-- [[data-structures.binary-trees.traverse]] DFS
+- [[data-structures.binary-trees.traverse]]
 - [[data-structures.recursion]]
+
+## Patterns
+
+- DFS

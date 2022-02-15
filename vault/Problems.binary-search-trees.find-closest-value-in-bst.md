@@ -2,7 +2,7 @@
 id: VWz2l3mWLt6icKBj8zwbs
 title: find-closest-value-in-bst
 desc: ""
-updated: 1642441656697
+updated: 1644895573933
 created: 1642441340559
 ---
 
@@ -62,3 +62,10 @@ function BSTHelper(tree, target, output) {
 ```
 
 ## Concepts
+
+- [[data-structures.binary-trees.search-trees]]
+- [[data-structures.binary-trees.traverse]]
+
+## Patterns
+
+- Modified Binary Search

@@ -1,8 +1,8 @@
 ---
 id: v4OODim5jeNuuURCTzWU5
 title: Traverse
-desc: ''
-updated: 1641185627271
+desc: ""
+updated: 1644727484137
 created: 1641096932336
 ---
 
@@ -52,19 +52,81 @@ The method you use to traverse the tree depends on what you are trying to do.
 
 ## Depth First Search
 
-![](/assets/images/2022-01-02-23-53-04.png)
-DFS is an algorithm where you go down a branch until the leaf is reached and process and proceed to another branch and so on. DFS usually make use of a stack to track all the visited nodes. For depth first search we can utilize any of the methods we outlined above.
+```mermaid
+graph TD;
+    a-->b;
+    a-->c;
+    c-->f;
+    b-->d;
+    b-->e;
+```
 
-So for the given binary tree below for our DFS if we utilized a pre-order traversal we would come up with the result shown below:
+DFS is an algorithm where you go down a branch until the leaf is reached and process and proceed to another branch and so on. DFS usually make use of a stack to track all the visited nodes. For depth first search we can utilize any of the methods we outlined above. The basic implementation of a DFS on a binary tree is the pre-order traversal.
 
-pre-order : [1,2,3,4,5,6,7,8,9,10,11,12]
+So for the given binary tree above for our DFS if we utilized a pre-order traversal we would come up with the result shown below:
+
+pre-order : ['a', 'b', 'd', 'e', 'c', 'f' ]
+
+Below we can see similar implementation of of a depth first search on a tree, recursively and iteratively using a stack.
+
+```javascript
+//Recursive
+//under the hood js will use a stack structure to keep track of all recursive calls.
+function depthFirstTree(tree) {
+  if (tree === null) return [];
+  const leftValue = depthFirstTree(tree.left); //[b,d,e]
+  const rightValue = depthFirstTree(tree.right); //[c,f]
+  return [tree, ...leftValue, ...rightValue]; //spread operator
+}
+//DFS: ['a', 'b', 'd', 'e', 'c', 'f' ]
+//Iterative
+function depthFirstTree(tree) {
+  if (tree === null) return [];
+  let result = [];
+  const stack = [tree];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    result.push(current.value);
+    if (current.left) stack.push(current.left);
+    if (current.right) stack.push(current.right);
+  }
+  return result;
+  //DFS: ['a', 'b', 'd', 'e', 'c', 'f' ]
+}
+```
 
 ## Breadth First Search
 
-![](/assets/images/2022-01-02-23-53-29.png)
+```mermaid
+graph TD;
+    a-->b;
+    a-->c;
+    c-->f;
+    b-->d;
+    b-->e;
+```
+
 BFS is an algorithm that is counterpart to DFS, where DFS make use of a stack BFS makes use of a queue for its data array. Thus elements are visited in a first in first out method(FIFO). This can also be called level order traversal as all nodes on a given level are visited before going to the next level.
 
 BFS is usually used in maps for finding the shortest route (google maps) or finding how many friend links/ relations you are from someone (facebook or linkedin). BFS is used often when you are looking for the "nearest" solution.
+
+Below we can see an implementation of a breadth-first search on a tree. Here as it's a breadth First search we have to implement it iteratively using a queue.
+
+```javascript
+function breadthFirstTree(tree) {
+  if (tree === null) return [];
+  const queue = [tree];
+  const result = [];
+  while (queue.length > 0) {
+    let current = queue.shift();
+    result.push(current.val);
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
+  }
+  return result;
+}
+//BFS ['a', 'b', 'c', 'd', 'e', 'f']
+```
 
 So in total the traversal algorithm are as follows:
 

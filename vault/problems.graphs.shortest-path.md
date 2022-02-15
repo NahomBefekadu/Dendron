@@ -2,7 +2,7 @@
 id: sS2eex44PQ1zau4ALDTdQ
 title: Shortest Path
 desc: ""
-updated: 1643600115517
+updated: 1644895343391
 created: 1643598088638
 ---
 
@@ -90,3 +90,11 @@ const helper = (graph, start, end, visited) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- BFS
+- Set/Map

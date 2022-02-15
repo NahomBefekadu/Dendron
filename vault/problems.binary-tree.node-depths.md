@@ -2,7 +2,7 @@
 id: 0gK6ZmX5NdFs2il6C55XT
 title: Node Depths
 desc: ""
-updated: 1641268072480
+updated: 1644895711400
 created: 1641232893502
 ---
 
@@ -90,3 +90,7 @@ class Program {
 
 - [[data-structures.binary-trees.traverse]]
 - [[data-structures.recursion]]
+
+## Patterns
+
+- DFS

@@ -2,7 +2,7 @@
 id: RrG5ujLHBbCFiqM3qCxVI
 title: paired-parentheses
 desc: ""
-updated: 1644419186728
+updated: 1644896269070
 created: 1644418841042
 ---
 
@@ -46,3 +46,9 @@ const pairedParentheses = (str) => {
 ```
 
 ## Concepts
+
+[[data-structures.stacks]]
+
+## Patterns
+
+- iterator

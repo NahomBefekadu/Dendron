@@ -2,7 +2,7 @@
 id: cs1rep96HogEwddBbZ1al
 title: decompress
 desc: ""
-updated: 1644428286538
+updated: 1644896219958
 created: 1644425729526
 ---
 
@@ -66,3 +66,9 @@ const decompressBraces = (s) => {
 ```
 
 ## Concepts
+
+[[data-structures.stacks]]
+
+## Patterns
+
+- Stack

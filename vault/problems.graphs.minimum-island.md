@@ -2,7 +2,7 @@
 id: WouSjAvULx6Qu2G2YzCOp
 title: Minimum Island
 desc: ""
-updated: 1643745783282
+updated: 1644895291763
 created: 1643736241857
 ---
 
@@ -72,3 +72,11 @@ var helper = function (grid, row, col, visited) {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS
+- Set/Map

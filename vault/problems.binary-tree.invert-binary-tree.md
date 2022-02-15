@@ -2,7 +2,7 @@
 id: g2pgFdlRqFmBGZAx2w5TX
 title: Invert Binary Tree
 desc: ""
-updated: 1641268040904
+updated: 1644895689047
 created: 1641237469394
 ---
 
@@ -105,3 +105,7 @@ class Program {
 
 - [[data-structures.binary-trees.traverse]]
 - [[data-structures.recursion]]
+
+## Patterns
+
+- DFS

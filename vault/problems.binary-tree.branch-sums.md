@@ -2,7 +2,7 @@
 id: p9MhOqyMCZX5Gy9vcGV0O
 title: Branch Sums
 desc: ""
-updated: 1641232847758
+updated: 1644894956777
 created: 1641230890325
 ---
 
@@ -104,3 +104,7 @@ class Program {
 
 - [[data-structures.recursion]]
 - [[data-structures.binary-trees]]
+
+## Patterns
+
+- Tree Depth First Search

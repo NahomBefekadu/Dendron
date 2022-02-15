@@ -2,7 +2,7 @@
 id: 0fRrhWC5sBUZNgYQcg7ym
 title: Largest Component
 desc: ""
-updated: 1643598064861
+updated: 1644895254196
 created: 1643597448516
 ---
 
@@ -72,3 +72,11 @@ const helper = (graph, node, visited) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS
+- Set/Map

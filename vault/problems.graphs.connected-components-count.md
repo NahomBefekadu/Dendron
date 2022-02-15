@@ -2,7 +2,7 @@
 id: 2p9cMCApWGjuVPLNCTR2e
 title: Connected Components Count
 desc: ""
-updated: 1643436175064
+updated: 1644895192730
 created: 1643434813236
 ---
 
@@ -81,3 +81,11 @@ const depthFirstTraverse = (graph, source, visited) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS
+- Set/Map

@@ -2,7 +2,7 @@
 id: 4wtXNaSdo2kxF8TLaswD1
 title: delete-node
 desc: ""
-updated: 1644718993099
+updated: 1644896440990
 created: 1644718817681
 ---
 
@@ -64,3 +64,10 @@ const removeNode = (head, targetVal) => {
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator

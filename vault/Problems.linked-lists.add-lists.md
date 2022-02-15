@@ -2,7 +2,7 @@
 id: KXNErAkqW3HOHpqS2fK8o
 title: add-lists
 desc: ""
-updated: 1644724399600
+updated: 1644896369320
 created: 1644724119080
 ---
 
@@ -68,3 +68,10 @@ const addLists = (head1, head2) => {
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator

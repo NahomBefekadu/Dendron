@@ -2,7 +2,7 @@
 id: T4qw6hGr3CTLuWfyAcBHO
 title: grid-traveler
 desc: ""
-updated: 1644248408889
+updated: 1644896085571
 created: 1644246871096
 ---
 
@@ -52,3 +52,9 @@ console.log(gridTraveler(18, 18));
 ```
 
 ## Concepts
+
+[[data-structures.recursion]]
+
+## Patterns
+
+- Map/Set

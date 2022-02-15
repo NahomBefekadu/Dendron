@@ -2,7 +2,7 @@
 id: jrCTtqDo2OppBEON5V4T2
 title: canSum
 desc: ""
-updated: 1644256246021
+updated: 1644896056873
 created: 1644252564310
 ---
 
@@ -56,3 +56,9 @@ O(m) space complexity
 ```
 
 ## Concepts
+
+[[data-structures.recursion]]
+
+## Patterns
+
+- Map/Set

@@ -2,7 +2,7 @@
 id: bXzP3lZ6K1DebcorUmmQN
 title: Has Path
 desc: ""
-updated: 1643380059919
+updated: 1644895222676
 created: 1643379085417
 ---
 
@@ -59,3 +59,10 @@ const depthFirstSearch = (graph, source, destination) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS

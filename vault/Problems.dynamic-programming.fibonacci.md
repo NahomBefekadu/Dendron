@@ -2,7 +2,7 @@
 id: cbtfKehIOTrO5jfNiIp9f
 title: fibonacci
 desc: ""
-updated: 1644245933699
+updated: 1644895421134
 created: 1644245078554
 ---
 
@@ -54,4 +54,7 @@ var fib = function (n, mem = {}) {
 ## Concepts
 
 - [[data-structures.recursion]]
-- [[Problems.recursion]]
+
+## Patterns
+
+- Set/Map

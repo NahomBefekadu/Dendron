@@ -2,7 +2,7 @@
 id: vuKT7FsbEJKavKvmKOxyN
 title: HowSum
 desc: ""
-updated: 1644256147405
+updated: 1644896103158
 created: 1644254141284
 ---
 
@@ -54,3 +54,9 @@ function howSum(array, targetSum, mem = {}) {
 ```
 
 ## Concepts
+
+[[data-structures.recursion]]
+
+## Patterns
+
+- Map/Set

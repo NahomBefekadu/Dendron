@@ -2,7 +2,7 @@
 id: bxQHzVlznk64z9QqBwHcR
 title: Has Path Undirected
 desc: ""
-updated: 1643385287587
+updated: 1644895187959
 created: 1643384186737
 ---
 
@@ -89,3 +89,11 @@ const depthFirstTraversal = (graph, start, destination, visited) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS
+- Set/Map

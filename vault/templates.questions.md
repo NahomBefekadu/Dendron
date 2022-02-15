@@ -2,7 +2,7 @@
 id: fufnQgeSzmKq8qtmAULGL
 title: Questions
 desc: ""
-updated: 1642441436204
+updated: 1644895021834
 created: 1641231895712
 ---
 
@@ -37,3 +37,5 @@ graph TD;
 ```
 
 ## Concepts
+
+## Patterns

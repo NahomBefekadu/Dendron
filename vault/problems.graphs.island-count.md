@@ -2,7 +2,7 @@
 id: 2Le3ECpJu2ToCytLinw8q
 title: Island Count
 desc: ""
-updated: 1643745788813
+updated: 1644895234897
 created: 1643600146089
 ---
 
@@ -83,3 +83,11 @@ const helper = (grid, row, col, visited) => {
 ```
 
 ## Concepts
+
+- [[data-structures.Graphs]]
+- [[data-structures.Graphs.traverse]]
+
+## Patterns
+
+- DFS
+- Set/Map

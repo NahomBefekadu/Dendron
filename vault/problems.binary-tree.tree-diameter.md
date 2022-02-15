@@ -2,7 +2,7 @@
 id: yV0szi3GGyuHyEbGYz3NZ
 title: Tree Diameter
 desc: ""
-updated: 1641268225155
+updated: 1644895736141
 created: 1641251785236
 ---
 
@@ -100,3 +100,7 @@ function binaryTreeDiameter(tree) {
 - [[data-structures.recursion]]
 - [[data-structures.binary-trees]]
 - [[data-structures.binary-trees.traverse]]
+
+## Patterns
+
+- DFS

@@ -2,7 +2,7 @@
 id: fY5pnoriiH8YTyiLFtacG
 title: insert-node
 desc: ""
-updated: 1644719387105
+updated: 1644896461682
 created: 1644719221921
 ---
 
@@ -69,3 +69,10 @@ const insertNode = (head, value, index) => {
 ```
 
 ## Concepts
+
+- [[data-structures.linked-list]]
+- [[data-structures.linked-list.single-linked-list]]
+
+## Patterns
+
+- Two Pointer/Iterator

@@ -2,7 +2,7 @@
 id: uLbeeEPOK6aYy7t8qQYFB
 title: balanced-brackets
 desc: ""
-updated: 1644420911738
+updated: 1644896212443
 created: 1644419279996
 ---
 
@@ -54,3 +54,9 @@ return stack.length === 0;
 ```
 
 ## Concepts
+
+[[data-structures.stacks]]
+
+## Patterns
+
+- Stack
