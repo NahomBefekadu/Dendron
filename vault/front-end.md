@@ -1,8 +1,8 @@
 ---
 id: Zd60tpALGBOrNJC2avO70
 title: Front End
-desc: ''
-updated: 1641170345907
+desc: ""
+updated: 1644939055426
 created: 1641170335576
 ---
 
@@ -12,4 +12,3 @@ created: 1641170335576
 - [ ] Links to resources?
 - [ ] inspo board
 - [ ] Colors/ color theory
-- [ ]

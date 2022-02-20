@@ -2,7 +2,7 @@
 id: l8rNoqR6OrTiJzqzAsfms
 title: Frameworks and Architecture
 desc: ""
-updated: 1641230051898
+updated: 1644939091729
 created: 1641230039159
 ---
 
@@ -19,6 +19,4 @@ created: 1641230039159
 - [ ] API section
 - [ ] Docker
 - [ ] Kubernetes
-- API documentations
-
-  - general knowledge about blank
+- [ ] API documentations
