@@ -2,7 +2,7 @@
 id: zFSvU97guIdPgCPqgy78g
 title: unique-value
 desc: ""
-updated: 1644896525353
+updated: 1645445728047
 created: 1644717060585
 ---
 
@@ -15,7 +15,7 @@ given a head of a linked list return a boolean indicating whether there exists e
 Link 1
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
     2-->6;
@@ -26,7 +26,7 @@ graph TD;
 Link 2
 
 ```mermaid
-graph TD;
+graph LR;
     g[1]-->g2[1];
     g2[1]-->g3[1];
 ```

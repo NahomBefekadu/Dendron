@@ -2,7 +2,7 @@
 id: fY5pnoriiH8YTyiLFtacG
 title: insert-node
 desc: ""
-updated: 1644896461682
+updated: 1645445709269
 created: 1644719221921
 ---
 
@@ -13,7 +13,7 @@ given a head of a linked list, a value, and an index. insert the value at the gi
 #### input:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
 ```
@@ -24,7 +24,7 @@ value=4
 #### Output:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->4;
     4-->2;

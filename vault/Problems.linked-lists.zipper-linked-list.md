@@ -2,7 +2,7 @@
 id: G1WYVj4RLmhMPi8bM57JW
 title: zipper-linked-list
 desc: ""
-updated: 1644896534456
+updated: 1645445738813
 created: 1644606177093
 ---
 

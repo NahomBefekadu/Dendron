@@ -2,7 +2,7 @@
 id: H4RlUx7zA12YiZlshc6W6
 title: longest-streak
 desc: ""
-updated: 1644896495768
+updated: 1645445714526
 created: 1644717894801
 ---
 
@@ -13,7 +13,7 @@ Given a head of a linked list, return the longest consecutive streak of a node w
 #### input:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
     2-->6;

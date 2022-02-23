@@ -2,7 +2,7 @@
 id: BZmdlSFmAqDwFchdgNOpq
 title: create-linked-list
 desc: ""
-updated: 1644896425788
+updated: 1645445671814
 created: 1644719423511
 ---
 
@@ -17,7 +17,7 @@ Given an array of values, create a linked list containing each element of the ar
 #### Output:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->2;
     2-->3;
     3-->4;

@@ -2,7 +2,7 @@
 id: 4wtXNaSdo2kxF8TLaswD1
 title: delete-node
 desc: ""
-updated: 1644896440990
+updated: 1645445702628
 created: 1644718817681
 ---
 
@@ -13,7 +13,7 @@ Given the head of a singly linked list, and a target value. Delete only the firs
 #### input:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
     2-->6;
@@ -24,7 +24,7 @@ target= 3
 #### Output:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->2;
     2-->6;
 ```

@@ -2,7 +2,7 @@
 id: KXNErAkqW3HOHpqS2fK8o
 title: add-lists
 desc: ""
-updated: 1644896369320
+updated: 1645445686605
 created: 1644724119080
 ---
 
@@ -13,13 +13,13 @@ given two heads of linked list, sum the nodes of the linked lists and return a n
 #### input:
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
 ```
 
 ```mermaid
-graph TD;
+graph LR;
     1-->3;
     3-->2;
 ```
@@ -27,7 +27,7 @@ graph TD;
 #### Output:
 
 ```mermaid
-graph TD;
+graph LR;
     2-->6;
     6-->4;
 ```
