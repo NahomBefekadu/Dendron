@@ -1,0 +1,35 @@
+<h1 id="fibonacci"><a aria-hidden="true" class="anchor-heading" href="#fibonacci"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>fibonacci</h1>
+<h2 id="question"><a aria-hidden="true" class="anchor-heading" href="#question"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Question</h2>
+<p>The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,</p>
+<p>F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).</p>
+<p>0 &#x3C;= n &#x3C;= 100</p>
+<h4 id="input"><a aria-hidden="true" class="anchor-heading" href="#input"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>input:</h4>
+<p>F(0)</p>
+<h4 id="output"><a aria-hidden="true" class="anchor-heading" href="#output"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Output:</h4>
+<p>output = 0</p>
+<h2 id="solution"><a aria-hidden="true" class="anchor-heading" href="#solution"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Solution</h2>
+<p>We cant do a simple recursion as done previously for our solution. our given n might be 50, 60 or higher. That means that our function will have to recursively step through way over million steps to complete. Thus we need to implement Memoization to save some answers to our sub problems.</p>
+<p>if we look at the fibonacci graph below we can see that the sub tree of 3 occurs twice once on the right and on the left. That means if we save the return value of 3 on our first run every time we face a similar node we can simply return that value.</p>
+<p><img src="/Dendron/assets/images/2022-02-07-09-56-32.png"></p>
+<h4 id="javascript"><a aria-hidden="true" class="anchor-heading" href="#javascript"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Javascript</h4>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">fib</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span> mem <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>n <span class="token keyword">in</span> mem<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> mem<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>n <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>n <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">||</span> n <span class="token operator">&#x3C;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  mem<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> mem<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> mem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">return</span> mem<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="java"><a aria-hidden="true" class="anchor-heading" href="#java"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Java</h4>
+<pre class="language-java"><code class="language-java"></code></pre>
+<h2 id="concepts"><a aria-hidden="true" class="anchor-heading" href="#concepts"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Concepts</h2>
+<ul>
+<li><a href="/Dendron/notes/kI5aQqoWn5mBeryTGwZZT">Recursion</a></li>
+</ul>
+<h2 id="patterns"><a aria-hidden="true" class="anchor-heading" href="#patterns"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patterns</h2>
+<ul>
+<li>Set/Map</li>
+</ul>

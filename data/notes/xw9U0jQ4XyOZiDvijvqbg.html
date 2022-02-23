@@ -1,0 +1,42 @@
+<h1 id="uncompress-string"><a aria-hidden="true" class="anchor-heading" href="#uncompress-string"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>uncompress-string</h1>
+<h2 id="question"><a aria-hidden="true" class="anchor-heading" href="#question"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Question</h2>
+<p>Given a String as an input, uncompress each character and repeat it based on the number indicated.</p>
+<h4 id="input"><a aria-hidden="true" class="anchor-heading" href="#input"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>input:</h4>
+<p>uncompress("2c3a1t")</p>
+<h4 id="output"><a aria-hidden="true" class="anchor-heading" href="#output"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Output:</h4>
+<p>'ccaaat'</p>
+<h2 id="solution"><a aria-hidden="true" class="anchor-heading" href="#solution"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Solution</h2>
+<p>We can solve this by iterating over our string input. First we can have an array of possible numbers in the string to check each character against.</p>
+<p>We will then have to pointers to loop through the array. for our first pointer, as we loop we check to see that the character currently is in our number array. If it's in our number array we simply increment our first pointer.</p>
+<p>Once we reach a character which is not in our number array we take a slice from our second pointer which is at the start to our first pointer. This will give us the number we need to repeat our given character.</p>
+<p>Now we take our given character and use a simple for loop or repeat function to push our repeated character into our results array. After we have pushed our array we then simply equal our second pointer to our first pointer, and increment our first pointer. We then go through this loop until we have reached the end of our string.</p>
+<h4 id="javascript"><a aria-hidden="true" class="anchor-heading" href="#javascript"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Javascript</h4>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">uncompress</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> numbers <span class="token operator">=</span> <span class="token string">"0123456789"</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>j <span class="token operator">&#x3C;</span> s<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>numbers<span class="token punctuation">.</span><span class="token method function property-access">includes</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      j <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> num <span class="token operator">=</span> <span class="token known-class-name class-name">Number</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> count <span class="token operator">&#x3C;</span> num<span class="token punctuation">;</span> count <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      j <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      i <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> result<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="java"><a aria-hidden="true" class="anchor-heading" href="#java"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Java</h4>
+<pre class="language-java"><code class="language-java"></code></pre>
+<h2 id="concepts"><a aria-hidden="true" class="anchor-heading" href="#concepts"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Concepts</h2>
+<p><a href="/Dendron/notes/0WlW3iokuTpYX6JNGAQAS">Arrays</a></p>
+<h2 id="patterns"><a aria-hidden="true" class="anchor-heading" href="#patterns"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patterns</h2>
+<ul>
+<li>Two Pointers</li>
+<li>One Fast one Slow pointer</li>
+</ul>

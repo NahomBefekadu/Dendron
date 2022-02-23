@@ -1,0 +1,228 @@
+<h1 id="double-linked-list"><a aria-hidden="true" class="anchor-heading" href="#double-linked-list"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Double Linked List</h1>
+<h1 id="linked-lists"><a aria-hidden="true" class="anchor-heading" href="#linked-lists"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Linked Lists</h1>
+<p>In javascript Linked lists use the Node class, which can also be imported from Node.js</p>
+<p>Below is the structure for a Node class that can be used to create linked lists.</p>
+<p><strong>this.next</strong> property is used to keep track of the following node.</p>
+<p><strong>this.data</strong> property is used to hold the data of the node.</p>
+<h2 id="node"><a aria-hidden="true" class="anchor-heading" href="#node"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Node</h2>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">setNextNode</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node <span class="token keyword">instanceof</span> <span class="token class-name">Node</span> <span class="token operator">||</span> node <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> node<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Next node must be a member of the Node class."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>we can use this Node class to create a list of nodes connected with each other and we can do that by creating a node and setting its next node property.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">FirstNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m first node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token maybe-class-name">SecondNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m second node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token maybe-class-name">ThirdNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m third node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">FirstNode</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token maybe-class-name">SecondNode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">SecondNode</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token maybe-class-name">ThirdNode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>so when creating a linked list we would go about first importing the Node class.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">Node</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./Node"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>So that's the base structure for a Node now how do we go about creating a linked list, first as stated above we call our Node module created previous and we create a LinkedList class.</p>
+<h2 id="doubly-linked-lists"><a aria-hidden="true" class="anchor-heading" href="#doubly-linked-lists"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Doubly Linked Lists</h2>
+<p>Similar to linked lists doubly linked lists comprise of nodes as well, the change is that they contain two pointer now which point to the next node similar to a linked list and a new addition a pointer to the previous node.</p>
+<p>previously when we created our next node it was pointing to null similarly for our previous node it will point to null as well , this is useful as doubly linked lists make traversal of the list easier.</p>
+<p>a bus route is similar to a doubly linked list with its stops serving as nodes, you can start from the head node and go down to the end of the stop and take the bus in reverse to go back to the starting point.</p>
+<h3 id="node-1"><a aria-hidden="true" class="anchor-heading" href="#node-1"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Node</h3>
+<p>this is the node class which we will use to create our doubly linked list, it's similar to the previous node but we've added the functionality of previous pointer.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">previous</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">setNextNode</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node <span class="token keyword">instanceof</span> <span class="token class-name">Node</span> <span class="token operator">||</span> node <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> node<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Next node must be a member of the Node class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">setPreviousNode</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node <span class="token keyword">instanceof</span> <span class="token class-name">Node</span> <span class="token operator">||</span> node <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">previous</span> <span class="token operator">=</span> node<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Previous node must be a member of the Node class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getPreviousNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">previous</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token maybe-class-name">Node</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="adding"><a aria-hidden="true" class="anchor-heading" href="#adding"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Adding</h4>
+<p>When we add nodes to doubly linked list we have to take care and keep track of the two pointers we now have.</p>
+<p>if we are adding to the head of the list we need to first check as always if there is a current head to the list, if there's none it becomes simple we just add a node where both the pointers are set to null. If not then we have to set the <strong>current heads</strong> previous pointer to our <strong>new head</strong> and set the next pointer of our <strong>new head</strong> to the <strong>current head</strong>, and we set the <strong>new head</strong>'s previous pointer to null.</p>
+<p>if we are adding to the tail similar to the head we check if list is empty following the same process as the head, if its not empty we set the current <strong>tails</strong> next pointer to the <strong>new tail</strong>, set the <strong>new tail</strong> previous to the <strong>current tail</strong>, and set the <strong>new tails</strong> next pointer to null.</p>
+<p>Add to Head:</p>
+<pre class="language-javascript"><code class="language-javascript"> <span class="token function">addToHead</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newHead<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> currentHead<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentHead<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      currentHead<span class="token punctuation">.</span><span class="token method function property-access">setPreviousNode</span><span class="token punctuation">(</span>newHead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      newHead<span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span>currentHead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token operator">=</span>newHead<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token operator">=</span>newHead<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+</code></pre>
+<p>Add to Tail:</p>
+<pre class="language-javascript"><code class="language-javascript">  <span class="token function">addToTail</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newTail <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> currentTail <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentTail<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      currentTail<span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span>newTail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      newTail<span class="token punctuation">.</span><span class="token method function property-access">setPreviousNode</span><span class="token punctuation">(</span>currentTail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token operator">=</span>newTail<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token operator">=</span>newTail<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+</code></pre>
+<h4 id="removing"><a aria-hidden="true" class="anchor-heading" href="#removing"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Removing</h4>
+<p>when removing the head we have to set the previous pointer of the new head to null. if we are removing the tail we have to set the next pointer of the new tail to null. if there was only one single element in the list both processes will occur.</p>
+<p>Now with double linked list we can remove a node from the middle of the list, that's one of the benefits. To do that we must set the removed nodes previous pointer to the following node after it, and we also must set the next node of the perceding node to its preceeding node.</p>
+<p>For better clarity if B is removed we set the previous pointer of C from B to A, and we set the next pointer of A from B to C.</p>
+<p>A &#x3C;-> B &#x3C;-> C</p>
+<p>A &#x3C;-> C</p>
+<p>Remove from Head:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> removedHead <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>removedHead<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token operator">=</span> removedHead<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">.</span><span class="token method function property-access">setPreviousNode</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>removedHead <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeTail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> removedHead<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+</code></pre>
+<p>Remove from Tail:</p>
+<pre class="language-javascript"><code class="language-javascript">  <span class="token function">removeTail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> removedTail <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>removedTail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span> <span class="token operator">=</span> removedTail<span class="token punctuation">.</span><span class="token method function property-access">getPreviousNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>removedTail <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> removedTail<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="removing-using-data"><a aria-hidden="true" class="anchor-heading" href="#removing-using-data"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Removing using Data</h4>
+<p>we first have to find a way to find the data we want to remove within our list, so the code below shows exactly that.</p>
+<pre class="language-javascript"><code class="language-javascript">  <span class="token function">removeByData</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> nodeToRemove<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> currentNode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">while</span><span class="token punctuation">(</span>currentNode<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentNode<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token operator">===</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        nodeToRemove<span class="token operator">=</span>currentNode<span class="token punctuation">;</span>
+        <span class="token keyword control-flow">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      currentNode<span class="token operator">=</span>currentNode<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nodeToRemove<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>now that we have found our given node that we would like to remove we have to remove it from our list, so we add to the code we already have from before.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">removeByData</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> nodeToRemove<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> currentNode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>currentNode <span class="token operator">!==</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentNode<span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">===</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        nodeToRemove <span class="token operator">=</span> currentNode<span class="token punctuation">;</span>
+        <span class="token keyword control-flow">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      currentNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nodeToRemove<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword control-flow">if</span><span class="token punctuation">(</span>nodeToRemove<span class="token operator">===</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>nodeToRemove<span class="token operator">===</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">tail</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeTail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword control-flow">else</span><span class="token punctuation">{</span>
+      <span class="token keyword">const</span> nextNode <span class="token operator">=</span> nodeToRemove<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> previousNode<span class="token operator">=</span>nodeToRemove<span class="token punctuation">.</span><span class="token method function property-access">getPreviousNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      nextNode<span class="token punctuation">.</span><span class="token method function property-access">setPreviousNode</span><span class="token punctuation">(</span>previousNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      previousNode<span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span>nextNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> nodeToRemove<span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="example-of-doubly-linked-lists"><a aria-hidden="true" class="anchor-heading" href="#example-of-doubly-linked-lists"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Example of Doubly Linked Lists</h2>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">DoublyLinkedList</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./DoublyLinkedList.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token maybe-class-name">Bus</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DoublyLinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToHead</span><span class="token punctuation">(</span><span class="token string">"Stop 3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToHead</span><span class="token punctuation">(</span><span class="token string">"Stop 2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToHead</span><span class="token punctuation">(</span><span class="token string">"Stop 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToTail</span><span class="token punctuation">(</span><span class="token string">"Stop 4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToTail</span><span class="token punctuation">(</span><span class="token string">"Stop 5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">addToTail</span><span class="token punctuation">(</span><span class="token string">"Stop 6"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">removeTail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">removeByData</span><span class="token punctuation">(</span><span class="token string">"Stop 4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Bus</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+OutPut:
+
+&#x3C;head> Stop 1 Stop 2 Stop 3 &#x3C;tail>
+&#x3C;head> Stop 1 Stop 2 Stop 3 Stop 4 Stop 5 Stop 6 &#x3C;tail>
+&#x3C;head> Stop 2 Stop 3 Stop 4 Stop 5 &#x3C;tail>
+&#x3C;head> Stop 2 Stop 3 Stop 5 &#x3C;tail>
+*/</span>
+</code></pre>

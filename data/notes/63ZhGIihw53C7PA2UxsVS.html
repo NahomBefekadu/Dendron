@@ -1,0 +1,83 @@
+<h1 id="traverse"><a aria-hidden="true" class="anchor-heading" href="#traverse"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Traverse</h1>
+<p>When trying to implement a graph in our preferred language of choice, we can represent graphs in an adjacency list (hashmap data structure), this can be an object for javascript, and unordered map for java.</p>
+<div class="mermaid">
+  graph LR;
+    a-->b;
+    a-->c;
+    b-->d;
+    c-->e;
+    e-->b;
+    f-->d;
+</div>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> graph <span class="token operator">=</span> <span class="token punctuation">{</span>
+  a<span class="token operator">:</span> <span class="token punctuation">[</span>b<span class="token punctuation">,</span> c<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  b<span class="token operator">:</span> <span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  c<span class="token operator">:</span> <span class="token punctuation">[</span>e<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  d<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  e<span class="token operator">:</span> <span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  f<span class="token operator">:</span> <span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="depth-first-traversal"><a aria-hidden="true" class="anchor-heading" href="#depth-first-traversal"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Depth First Traversal</h3>
+<p>For depth first traversal, given a source node, the algorithm travels through the graph and explores until it reaches the end of the given path before backtracking.</p>
+<p>So in our given example graph, if our source node is A, one path we could take is: [A,C,E,B,D] if we had chosen b instead of C our path would look like [A,B,D].</p>
+<p>To Build a depth first traversal algorithm we can use a data structure we learned previously a stack to implement this. And we know that Stack works on the LIFO, so we can first visualize how this will work on our graph.</p>
+<p><img src="/Dendron/assets/images/2022-01-28-08-36-17.png"></p>
+<p>As seen above if we initialize our stack with the node A, we can then pop node A of our stack and push into the stack the neighbors of A. Then we can go through the whole graph by popping an element from the stack and pushing the neighbors of the current node until the stack is empty. At that point we have traversed through all nodes in the graph, using the depth-first traversal method.</p>
+<p>Now we can implement Depth First Traversal in our code in two ways, iteratively or recursively.</p>
+<p>For our first method we will choose to use the recursive method which is simpler than the iterative method.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">depthFirstSearch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">graph<span class="token punctuation">,</span> source</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> neighbor <span class="token keyword">of</span> graph<span class="token punctuation">[</span>source<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">depthFirstSearch</span><span class="token punctuation">(</span>graph<span class="token punctuation">,</span> neighbor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>and our iterative method will look something like this:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">depthFirstSearch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">graph<span class="token punctuation">,</span> source</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> stack <span class="token operator">=</span> <span class="token punctuation">[</span>source<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> currentNode <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token method function property-access">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>currentNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> neighbor <span class="token keyword">of</span> graph<span class="token punctuation">[</span>currentNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      stack<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="breadth-first-traversal"><a aria-hidden="true" class="anchor-heading" href="#breadth-first-traversal"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Breadth First Traversal</h3>
+<p>For Breadth first traversal, given a source node, the algorithm travels through the graph and explores all given nodes at the current depth it's at, before traversing to the next depth of the graph until it reaches the end.</p>
+<p>So in our given example graph at the top, if our source node is A, a path we could take would look something like this: [A,B,C,D,E,F].</p>
+<p>To Build a Breadth first traversal algorithm we can use a data structure we learned previously a Queue to implement this. And we know that Queue works on the FIFO method, so we can first visualize how this will work on our graph.</p>
+<p><img src="/Dendron/assets/images/2022-01-28-09-01-03.png"></p>
+<p>As seen above if we initialize our Queue with the node A, we can then shift node A of our Queue and push into the Queue the neighbors of A. Then we can go through the whole graph by shifting an element from the Queue and pushing the neighbors of the current node until the Queue is empty. At that point we have traversed through all nodes in the graph, using the Breadth-first traversal method.</p>
+<p>Different from our Depth-first traversal, breadth-first traversal can only be performed iteratively.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">breadthFirstSearch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">graph<span class="token punctuation">,</span> source</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token maybe-class-name">Queue</span> <span class="token operator">=</span> <span class="token punctuation">[</span>source<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span><span class="token maybe-class-name">Queue</span><span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> currentNode <span class="token operator">=</span> <span class="token maybe-class-name">Queue</span><span class="token punctuation">.</span><span class="token method function property-access">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>currentNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> neighbor <span class="token keyword">of</span> graph<span class="token punctuation">[</span>currentNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token maybe-class-name">Queue</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="related-topics"><a aria-hidden="true" class="anchor-heading" href="#related-topics"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Related Topics</h3>
+<ul>
+<li><a href="/Dendron/notes/WZ2a0ixYCPWAPCh5x1Alr">Stacks</a></li>
+<li><a href="/Dendron/notes/bp7DKWzognTMTV0zzhTat">Queues</a></li>
+</ul>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/2p9cMCApWGjuVPLNCTR2e">Connected Components Count</a></li>
+<li><a href="/Dendron/notes/bxQHzVlznk64z9QqBwHcR">Has Path Undirected</a></li>
+<li><a href="/Dendron/notes/bXzP3lZ6K1DebcorUmmQN">Has Path</a></li>
+<li><a href="/Dendron/notes/2Le3ECpJu2ToCytLinw8q">Island Count</a></li>
+<li><a href="/Dendron/notes/0fRrhWC5sBUZNgYQcg7ym">Largest Component</a></li>
+<li><a href="/Dendron/notes/WouSjAvULx6Qu2G2YzCOp">Minimum Island</a></li>
+<li><a href="/Dendron/notes/sS2eex44PQ1zau4ALDTdQ">Shortest Path</a></li>
+</ul>

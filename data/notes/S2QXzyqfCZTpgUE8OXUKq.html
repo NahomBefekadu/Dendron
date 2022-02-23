@@ -1,0 +1,31 @@
+<h1 id="deploy-jar"><a aria-hidden="true" class="anchor-heading" href="#deploy-jar"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Deploy Jar</h1>
+<ul>
+<li>right click target and select open in terminal</li>
+</ul>
+<ul>
+<li>then type java -jar {the jar name start of it then can press tab to autocomplete}</li>
+</ul>
+<p>After that the server is deployed.</p>
+<p>application.properties is where you define your connection details.</p>
+<p>flyaway is for database migrations, manage db schema as we evolve</p>
+<p>to create the database inside of the docker instance we are using so we can use the name of the db in our java app.</p>
+<p>we have to remove into the contianer and create the DB</p>
+<p>we do that by</p>
+<pre class="language-terminal"><code class="language-terminal">docker exec -it {CONTAINER ID} bin/bash
+
+psql -U {username}
+
+
+\l
+
+CREATE DATABASE {name}
+
+\c {db name}
+
+\d
+\dt
+</code></pre>
+<p>the second line logs in to postgress as user</p>
+<p>the third line lists all the database currently have</p>
+<p>connect to the database using the fourth command</p>
+<p>5 and 6 are used for describing the database 5 is for everything 6 is just for tables</p>

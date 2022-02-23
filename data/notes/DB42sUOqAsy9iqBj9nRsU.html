@@ -1,0 +1,56 @@
+<h1 id="linked-list"><a aria-hidden="true" class="anchor-heading" href="#linked-list"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Linked List</h1>
+<p>Linked Lists are Linear Data Structures that hold data in nodes, and where each element is arranged/stored sequentially. But they are also recursive data structures as linked lists are composed of smaller instances of themselves(nodes). The data they held by the node is composed of a value and a pointer to another node.</p>
+<p>How do linked lists then differ from an array, well we know that in an array all the data has to be continuous in memory. But in the case of linked list all the data it contains do not have be next to each other in memory.</p>
+<p>Single Linked List</p>
+<div class="mermaid">
+  graph TD;
+A[value:A next:B] --> B[value:B next:null]
+
+</div>
+<p>Doubly Linked List</p>
+<div class="mermaid">
+  graph TD;
+A[value:A next:B previous:null] --> B[value:B next:null previous:A]
+B[value:B next:null previous:A] --> A
+
+</div>
+<p>When looking at the linked list we can see that it has an insertion of O(1) but comparatively worse look up time of (n). This look up time is related to the fact that you have to traverse the linked list to find the right insertion or lookup point. As to get the 50th element in a linked list, you would have to traverse 49 nodes from the head node to reach it.</p>
+<h2 id="traversal"><a aria-hidden="true" class="anchor-heading" href="#traversal"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Traversal</h2>
+<p>Now we can traverse through a given linked lists two ways either iteratively or recursively. we can look at a simple function to print a given linked list.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// iteratively</span>
+<span class="token keyword">const</span> <span class="token function-variable function">printLinkedList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  current <span class="token operator">=</span> head<span class="token punctuation">;</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>current <span class="token operator">!==</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    current <span class="token operator">=</span> current<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//recursively</span>
+<span class="token keyword">const</span> <span class="token function-variable function"><span class="token maybe-class-name">PrintLinkedList</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  current <span class="token operator">=</span> head<span class="token punctuation">;</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>current <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function"><span class="token maybe-class-name">PrintLinkedList</span></span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/KXNErAkqW3HOHpqS2fK8o">add-lists</a></li>
+<li><a href="/Dendron/notes/BZmdlSFmAqDwFchdgNOpq">create-linked-list</a></li>
+<li><a href="/Dendron/notes/44QhIoUX7GY2HdS8iX0tJ">cycle-length</a></li>
+<li><a href="/Dendron/notes/LcXo4RabS7LG9NxJjdbcA">cycle-start</a></li>
+<li><a href="/Dendron/notes/QhCdJ0pX3xnx20ivBEXHw">cycle</a></li>
+<li><a href="/Dendron/notes/4wtXNaSdo2kxF8TLaswD1">delete-node</a></li>
+<li><a href="/Dendron/notes/fY5pnoriiH8YTyiLFtacG">insert-node</a></li>
+<li><a href="/Dendron/notes/H4RlUx7zA12YiZlshc6W6">longest-streak</a></li>
+<li><a href="/Dendron/notes/yezeqbEm7mi5GFpRnYIQG">middle-of-linked-list</a></li>
+<li><a href="/Dendron/notes/zFSvU97guIdPgCPqgy78g">unique-value</a></li>
+<li><a href="/Dendron/notes/G1WYVj4RLmhMPi8bM57JW">zipper-linked-list</a></li>
+</ul>
+<hr>
+<h2 id="children"><a aria-hidden="true" class="anchor-heading" href="#children"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Children</h2>
+<ol>
+<li><a href="/Dendron/notes/a7n7Z1pfmMiPOqzs3RlAw">Double Linked List</a></li>
+<li><a href="/Dendron/notes/TqhGe3YMK86P6QUFBpdrf">Single Linked List</a></li>
+</ol>

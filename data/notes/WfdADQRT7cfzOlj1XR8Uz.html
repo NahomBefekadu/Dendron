@@ -1,0 +1,42 @@
+<h1 id="binary-trees"><a aria-hidden="true" class="anchor-heading" href="#binary-trees"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Binary Trees</h1>
+<p><img src="/Dendron/assets/images/2022-01-02-23-35-49.png"></p>
+<p>Binary Tree is a tree data structure in which each node has at most two children,left child and right child. Usually nodes in a tree can have multiple children but binary trees can have only two max. They are a useful data structure for storing data such as numbers and allow for fast lookup using binary search functionality.</p>
+<p>the number of children each node has in a tree is called branching factor, and as such a binary tree has a branching factor of 2.</p>
+<p>Similar to linked list a binary tree has a node which contains a value and a pointer to another node. But in a binary tree it has two pointers one for the left child and one for the right child.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">BST</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="/Dendron/assets/images/2022-01-02-23-36-06.png"></p>
+<p>A binary tree uis made up of nodes and links/edges, The nodes represent the data stored in the tree, and the node at the top is called the root while every other node is a child node or a parent node. The nodes which point to no other node are called Leaf nodes. Nodes which have the same parent are called sibling nodes.</p>
+<p>In general the number of nodes present in a tree will be one more than the number of edges/links present. Thus you can find the number of nodes present by counting the number of edges and adding one.</p>
+<p>Below you can find how simple it is to search though a binary tree.
+<a href="https://blog.penjee.com/wp-content/uploads/2015/11/binary-search-tree-sorted-array-animation.gif">https://blog.penjee.com/wp-content/uploads/2015/11/binary-search-tree-sorted-array-animation.gif</a></p>
+<p><img src="/Dendron/assets/images/2022-01-02-23-36-53.png"></p>
+<hr>
+<p>Another thing to pay attention for binary trees is the depth, node height, and tree height. To maximize efficiency of searching for an element in the tree.</p>
+<p>We say that the <strong>depth</strong> of a node is the number of links from the root to the node. Thus the root node has a depth of zero and its direct children have a depth of 1.</p>
+<p>We say that the <strong>height</strong> of a tree is the depth of the deepest node present in the tree from the root node. When we want to find a specific <strong>node height</strong> we look at the number of edges present from that node to a leaf node.</p>
+<p>To find the maximum/larges number of nodes a binary tree can have we use this formula: 2^(height or n) - 1 max nodes possible at each tree height.</p>
+<p><img src="/Dendron/assets/images/2022-01-02-23-40-55.png"></p>
+<p>A given binary tree can be a full or complete binary tree. When we say a full binary tree we mean that each node has either exactly zero or two children. Since every node has to point to at least two nodes after the root node, a full binary tree cannot have an even number of nodes.</p>
+<p>Whereas a complete binary tree is completely filled(except the last level sometimes) and is made so that all given sub nodes are as far left as possible.</p>
+<p><img src="/Dendron/assets/images/2022-01-02-23-41-09.png"></p>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/p9MhOqyMCZX5Gy9vcGV0O">Branch Sums</a></li>
+<li><a href="/Dendron/notes/yV0szi3GGyuHyEbGYz3NZ">Tree Diameter</a></li>
+<li><a href="/Dendron/notes/SimMK6mMAWR4H53Xqh9XB">Tree Sum</a></li>
+</ul>
+<hr>
+<h2 id="children"><a aria-hidden="true" class="anchor-heading" href="#children"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Children</h2>
+<ol>
+<li><a href="/Dendron/notes/dAIbJALaDi5GytOwdazz9">Balancing</a></li>
+<li><a href="/Dendron/notes/IeIECqCpjnXdzzoXriTH2">Search Trees</a></li>
+<li><a href="/Dendron/notes/v4OODim5jeNuuURCTzWU5">Traverse</a></li>
+</ol>

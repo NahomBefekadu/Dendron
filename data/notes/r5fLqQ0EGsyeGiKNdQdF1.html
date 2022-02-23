@@ -1,0 +1,62 @@
+<h1 id="three-number-sum"><a aria-hidden="true" class="anchor-heading" href="#three-number-sum"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>three-number-sum</h1>
+<h2 id="question"><a aria-hidden="true" class="anchor-heading" href="#question"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Question</h2>
+<p>Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.</p>
+<p>Notice that the solution set must not contain duplicate triplets.</p>
+<h4 id="input"><a aria-hidden="true" class="anchor-heading" href="#input"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>input:</h4>
+<p>Input: nums = [-1,0,1,2,-1,-4]</p>
+<h4 id="output"><a aria-hidden="true" class="anchor-heading" href="#output"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Output:</h4>
+<p>Output: [[-1,-1,2],[-1,0,1]]</p>
+<h2 id="solution"><a aria-hidden="true" class="anchor-heading" href="#solution"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Solution</h2>
+<p>For our three sum solution, we can first sort our array, then attempt to solve this. As sorting our array would take less time than finding the solution( the added complexity can be ignored).</p>
+<p>The way in which we can solve this is by implementing the solution of a two sum problem into this, As our array is sorted we put our first pointer as the next one in to this value, and send it to our two sum helper function as the target value. Because A+B+C=0, so -C=A+B. Therefore we send to our two sum function our array, first pointer, target value and our triplet array.</p>
+<p>In our Two Sum function we can approach this using two pointers instead of using sets as done previously. we will have our second pointer pointing to the end of our array, and do a while loop. In our while loop we check if the sum of the two values of our pointer is equal to our target value. If it equals the target value we can simply push it into our triplets array the three values needed, and increment our pointers. As we need to avoid having duplicate triplets, we do another while loop inside our if statement to skip same elements for both our pointers.</p>
+<p>If our current sum does not equal our target value then we can simply increase our pointers. If our current sum is less than the target sum we need a bigger current sum, so we increment our first pointer, and vice versa for our second pointer. Once we have tried all combination we simply return our triplet array. In our original array before we call our helper function we also need to check if we have the same element and skip it in order to avoid duplicate triplets in our triplets array.</p>
+<h4 id="javascript"><a aria-hidden="true" class="anchor-heading" href="#javascript"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Javascript</h4>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">threeSum</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  triplets <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  arr<span class="token punctuation">.</span><span class="token method function property-access">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> a <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> arr<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&#x26;&#x26;</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">continue</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">help</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> triplets<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> triplets<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">help</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">arr<span class="token punctuation">,</span> p1<span class="token punctuation">,</span> target_Sum<span class="token punctuation">,</span> triplets</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> p2 <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>p1 <span class="token operator">&#x3C;</span> p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    currentSum <span class="token operator">=</span> arr<span class="token punctuation">[</span>p1<span class="token punctuation">]</span> <span class="token operator">+</span> arr<span class="token punctuation">[</span>p2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentSum <span class="token operator">===</span> target_Sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      triplets<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span>target_Sum<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>p1<span class="token punctuation">]</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>p2<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      p2<span class="token operator">--</span><span class="token punctuation">;</span>
+      p1<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>p1<span class="token punctuation">]</span> <span class="token operator">===</span> arr<span class="token punctuation">[</span>p1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> p1<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>p2<span class="token punctuation">]</span> <span class="token operator">===</span> arr<span class="token punctuation">[</span>p2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> p2<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentSum <span class="token operator">&#x3C;</span> target_Sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      p1<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      p2<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> triplets<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="java"><a aria-hidden="true" class="anchor-heading" href="#java"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Java</h4>
+<pre class="language-java"><code class="language-java"></code></pre>
+<h2 id="concepts"><a aria-hidden="true" class="anchor-heading" href="#concepts"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Concepts</h2>
+<ul>
+<li><a href="/Dendron/notes/0WlW3iokuTpYX6JNGAQAS">Arrays</a></li>
+<li><a href="/Dendron/notes/CfJ8vN1e40PJUPWEOG8Ql">two-sum</a></li>
+</ul>
+<h2 id="patterns"><a aria-hidden="true" class="anchor-heading" href="#patterns"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patterns</h2>
+<ul>
+<li>Two Pointer</li>
+</ul>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/RhpCJdLetWjrVSRoaJCYP">four-sum</a></li>
+<li><a href="/Dendron/notes/Fvlig9pSrEWx8pdT9DYG3">three-sum-closest</a></li>
+<li><a href="/Dendron/notes/i3RiJD6KZ4veqDsl2OXwU">three-sum-smallest</a></li>
+</ul>

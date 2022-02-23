@@ -1,0 +1,42 @@
+<h1 id="recursion"><a aria-hidden="true" class="anchor-heading" href="#recursion"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Recursion</h1>
+<p>Recursion is useful for many other data structures and computer programs. One of the best examples of recursion is the fibonacci sequence.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">fibonacci</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">f</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>f <span class="token operator">&#x3C;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"index error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>f <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>f <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">let</span> fn <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> f <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fn<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>fn<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> fn<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> fn<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//34</span>
+</code></pre>
+<p>To see how the call stacks work lets take a look at calling the function fibonacci(4).</p>
+<p>This would result in the function being called nine times, as it recursively calls the function each time as shown below.</p>
+<pre class="language-terminal"><code class="language-terminal">F(4) - F(3)  - F(2) - F(1)
+       F(3)  - F(2) - F(1)
+               F(2) - F(1)
+</code></pre>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/jrCTtqDo2OppBEON5V4T2">canSum</a></li>
+<li><a href="/Dendron/notes/cbtfKehIOTrO5jfNiIp9f">fibonacci</a></li>
+<li><a href="/Dendron/notes/T4qw6hGr3CTLuWfyAcBHO">grid-traveler</a></li>
+<li><a href="/Dendron/notes/vuKT7FsbEJKavKvmKOxyN">HowSum</a></li>
+<li><a href="/Dendron/notes/p9MhOqyMCZX5Gy9vcGV0O">Branch Sums</a></li>
+<li><a href="/Dendron/notes/nxnz8au39VJc43CWpp9sg">Find Successor</a></li>
+<li><a href="/Dendron/notes/Cr43aZC95xv3USYVzz0QY">Height Balanced</a></li>
+<li><a href="/Dendron/notes/g2pgFdlRqFmBGZAx2w5TX">Invert Binary Tree</a></li>
+<li><a href="/Dendron/notes/0gK6ZmX5NdFs2il6C55XT">Node Depths</a></li>
+<li><a href="/Dendron/notes/yV0szi3GGyuHyEbGYz3NZ">Tree Diameter</a></li>
+<li><a href="/Dendron/notes/SimMK6mMAWR4H53Xqh9XB">Tree Sum</a></li>
+</ul>

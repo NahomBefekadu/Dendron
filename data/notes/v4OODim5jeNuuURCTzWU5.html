@@ -1,0 +1,113 @@
+<h1 id="traverse"><a aria-hidden="true" class="anchor-heading" href="#traverse"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Traverse</h1>
+<p>When you navigate through a tree and find all the data it contains you call that a traversal, as it traverses the whole binary tree.</p>
+<p><img src="/Dendron/assets/images/2022-01-02-23-51-27.png"></p>
+<p>The first method of traversal is called is pre-order traversal</p>
+<p>For this you can use a simple recursion algorithm to traverse the tree and print all the letters contained by the nodes.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">BSTpre</span></span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function"><span class="token maybe-class-name">BSTpre</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function"><span class="token maybe-class-name">BSTpre</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The second method is called in-order traversal where you go around the tree counterclockwise. In this case the letter is only printed after it has traversed down the left branch. Using this method in a sorted binary tree, you are able to print all numbers in the correct order.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">BSTinOrder</span></span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function"><span class="token maybe-class-name">BSTinOrder</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function"><span class="token maybe-class-name">BSTinOrder</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The last method is called post-order traversal similar to in-order traversal you go through the tree counterclockwise but you print the value of each node as you pass the right side instead of the left like in-order. Each value is printed the last time it is reached recursively as it moves left and then right to print the data last.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">BSTpost</span></span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function"><span class="token maybe-class-name">BSTpost</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function"><span class="token maybe-class-name">BSTpost</span></span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The method you use to traverse the tree depends on what you are trying to do.</p>
+<h2 id="depth-first-search"><a aria-hidden="true" class="anchor-heading" href="#depth-first-search"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Depth First Search</h2>
+<div class="mermaid">
+  graph TD;
+    a-->b;
+    a-->c;
+    c-->f;
+    b-->d;
+    b-->e;
+</div>
+<p>DFS is an algorithm where you go down a branch until the leaf is reached and process and proceed to another branch and so on. DFS usually make use of a stack to track all the visited nodes. For depth first search we can utilize any of the methods we outlined above. The basic implementation of a DFS on a binary tree is the pre-order traversal.</p>
+<p>So for the given binary tree above for our DFS if we utilized a pre-order traversal we would come up with the result shown below:</p>
+<p>pre-order : ['a', 'b', 'd', 'e', 'c', 'f' ]</p>
+<p>Below we can see similar implementation of of a depth first search on a tree, recursively and iteratively using a stack.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">//Recursive</span>
+<span class="token comment">//under the hood js will use a stack structure to keep track of all recursive calls.</span>
+<span class="token keyword">function</span> <span class="token function">depthFirstTree</span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> leftValue <span class="token operator">=</span> <span class="token function">depthFirstTree</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//[b,d,e]</span>
+  <span class="token keyword">const</span> rightValue <span class="token operator">=</span> <span class="token function">depthFirstTree</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//[c,f]</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span>tree<span class="token punctuation">,</span> <span class="token spread operator">...</span>leftValue<span class="token punctuation">,</span> <span class="token spread operator">...</span>rightValue<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//spread operator</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//DFS: ['a', 'b', 'd', 'e', 'c', 'f' ]</span>
+<span class="token comment">//Iterative</span>
+<span class="token keyword">function</span> <span class="token function">depthFirstTree</span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> stack <span class="token operator">=</span> <span class="token punctuation">[</span>tree<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> current <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token method function property-access">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    result<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> stack<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> stack<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> result<span class="token punctuation">;</span>
+  <span class="token comment">//DFS: ['a', 'b', 'd', 'e', 'c', 'f' ]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="breadth-first-search"><a aria-hidden="true" class="anchor-heading" href="#breadth-first-search"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Breadth First Search</h2>
+<div class="mermaid">
+  graph TD;
+    a-->b;
+    a-->c;
+    c-->f;
+    b-->d;
+    b-->e;
+</div>
+<p>BFS is an algorithm that is counterpart to DFS, where DFS make use of a stack BFS makes use of a queue for its data array. Thus elements are visited in a first in first out method(FIFO). This can also be called level order traversal as all nodes on a given level are visited before going to the next level.</p>
+<p>BFS is usually used in maps for finding the shortest route (google maps) or finding how many friend links/ relations you are from someone (facebook or linkedin). BFS is used often when you are looking for the "nearest" solution.</p>
+<p>Below we can see an implementation of a breadth-first search on a tree. Here as it's a breadth First search we have to implement it iteratively using a queue.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">breadthFirstTree</span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>tree <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> queue <span class="token operator">=</span> <span class="token punctuation">[</span>tree<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> current <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token method function property-access">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    result<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">val</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//BFS ['a', 'b', 'c', 'd', 'e', 'f']</span>
+</code></pre>
+<p>So in total the traversal algorithm are as follows:</p>
+<ul>
+<li>BFS</li>
+<li>pre-order traversal</li>
+<li>in-order traversal</li>
+<li>post-order traversal</li>
+</ul>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/VWz2l3mWLt6icKBj8zwbs">find-closest-value-in-bst</a></li>
+<li><a href="/Dendron/notes/nxnz8au39VJc43CWpp9sg">Find Successor</a></li>
+<li><a href="/Dendron/notes/Cr43aZC95xv3USYVzz0QY">Height Balanced</a></li>
+<li><a href="/Dendron/notes/g2pgFdlRqFmBGZAx2w5TX">Invert Binary Tree</a></li>
+<li><a href="/Dendron/notes/0gK6ZmX5NdFs2il6C55XT">Node Depths</a></li>
+<li><a href="/Dendron/notes/yV0szi3GGyuHyEbGYz3NZ">Tree Diameter</a></li>
+<li><a href="/Dendron/notes/SimMK6mMAWR4H53Xqh9XB">Tree Sum</a></li>
+</ul>

@@ -1,0 +1,59 @@
+<h1 id="arrays"><a aria-hidden="true" class="anchor-heading" href="#arrays"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Arrays</h1>
+<p>Arrays are the most used data structures, and is a fundemental data structure.</p>
+<p>A static array is a fixed length container which contains n elements that is indexable from the range 0 to n-1. Static Arrays are created as continuous chunks of memory, each element in the static array is sequential addressed.</p>
+<p>Static arrays are used for storing and accessing sequential data, temporarily store objects, used as buffers in IO, used in dynamic programming to cache subproblem answers and more.</p>
+<p>Compared to static arrays, dynamic array can grow and shrink in size. Generally a dynamic array can be created using a static array, we can do so by checking the size of our current array and elements being inserted. Then based on size of our element and array we can double our static array if we find we can't fit our element into our static array. Thus we can keep continuing resizing our array as we add elements to our static array.</p>
+<p>In an Array when we access an array due to it being indexable the time is constant at O(1), where as if we're searching for an element it'll be a linear time of O(n) similar to insertion and deletion.</p>
+<p>Below are some methods to traverse an array and sort an array.</p>
+<p>Javascript</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> nums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> nums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> num <span class="token keyword">of</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> nums<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//sort</span>
+nums<span class="token punctuation">.</span><span class="token method function property-access">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> a <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<p>Java</p>
+<pre class="language-java"><code class="language-java"><span class="token class-name">String</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> name <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> name <span class="token operator">:</span> names<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&#x3C;</span>names<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">deepToString</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//sort</span>
+<span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/l0AXctxDXCVzD7tOH8cot">average-k-elements</a></li>
+<li><a href="/Dendron/notes/RhpCJdLetWjrVSRoaJCYP">four-sum</a></li>
+<li><a href="/Dendron/notes/pEqW7SgkgI6H1HzPW2Ft5">longest-subarray-with-ones</a></li>
+<li><a href="/Dendron/notes/XhU0p46JCUp90VJiwuQab">longest-substring-with-distinct-characters</a></li>
+<li><a href="/Dendron/notes/5xCMJ0qjGA43UutQMjRpU">longest-substring-with-k-distinct-characters</a></li>
+<li><a href="/Dendron/notes/dFBP44ODoPQpWeGUGeiDe">maximum-subarray-of-sizeK</a></li>
+<li><a href="/Dendron/notes/G24vKJQblZsOfAc7g549D">remove-duplicate</a></li>
+<li><a href="/Dendron/notes/zTxBMyLv5VmlHZSW7ArLh">remove-element</a></li>
+<li><a href="/Dendron/notes/SWb2YMdepwC0W96jXocde">smallest-subarray-with-greater-sum</a></li>
+<li><a href="/Dendron/notes/p3bTIZxlbmHsKyvTouxGd">sort-colors/ Dutch Flag Problem</a></li>
+<li><a href="/Dendron/notes/ZYm8WYwxGH6HXuZRUhFop">square-sorted-array</a></li>
+<li><a href="/Dendron/notes/r5fLqQ0EGsyeGiKNdQdF1">three-number-sum</a></li>
+<li><a href="/Dendron/notes/Fvlig9pSrEWx8pdT9DYG3">three-sum-closest</a></li>
+<li><a href="/Dendron/notes/i3RiJD6KZ4veqDsl2OXwU">three-sum-smallest</a></li>
+<li><a href="/Dendron/notes/CfJ8vN1e40PJUPWEOG8Ql">two-sum</a></li>
+<li><a href="/Dendron/notes/xw9U0jQ4XyOZiDvijvqbg">uncompress-string</a></li>
+<li><a href="/Dendron/notes/Z628Wpyg2J9hUV8Ys6GcY">merge-intervals</a></li>
+<li><a href="/Dendron/notes/3mmtr5cM70CIo06wF2JeT">longest-repeating-char-replacement</a></li>
+</ul>

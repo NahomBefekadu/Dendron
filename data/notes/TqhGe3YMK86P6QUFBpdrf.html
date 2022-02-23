@@ -1,0 +1,134 @@
+<h1 id="single-linked-list"><a aria-hidden="true" class="anchor-heading" href="#single-linked-list"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Single Linked List</h1>
+<h1 id="linked-lists"><a aria-hidden="true" class="anchor-heading" href="#linked-lists"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Linked Lists</h1>
+<p>In javascript Linked lists use the Node class, which can also be imported from Node.js</p>
+<p>Below is the structure for a Node class that can be used to create linked lists.</p>
+<p><strong>this.next</strong> property is used to keep track of the following node.</p>
+<p><strong>this.data</strong> property is used to hold the data of the node.</p>
+<h2 id="node"><a aria-hidden="true" class="anchor-heading" href="#node"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Node</h2>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">setNextNode</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node <span class="token keyword">instanceof</span> <span class="token class-name">Node</span> <span class="token operator">||</span> node <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> node<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Next node must be a member of the Node class."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>we can use this Node class to create a list of nodes connected with each other and we can do that by creating a node and setting its next node property.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">FirstNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m first node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token maybe-class-name">SecondNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m second node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token maybe-class-name">ThirdNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token string">'I"m third node'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token maybe-class-name">FirstNode</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token maybe-class-name">SecondNode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">SecondNode</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token maybe-class-name">ThirdNode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>so when creating a linked list we would go about first importing the Node class.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">Node</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./Node"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>So that's the base structure for a Node now how do we go about creating a linked list, first as stated above we call our Node module created previous and we create a LinkedList class.</p>
+<h2 id="linkedlist"><a aria-hidden="true" class="anchor-heading" href="#linkedlist"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>LinkedList</h2>
+<p>This is our class created for our linked list, we first create a constructor and set our head value for our linked list to <strong>null</strong></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">LinkedList</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="adding"><a aria-hidden="true" class="anchor-heading" href="#adding"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Adding</h4>
+<p>After that we need a way in which we can add a new node and data into our created linked list, so we create a method to create a set of nodes.</p>
+<p>The add to head method works by first creating a new Node using the module we imported and created previously, from there we create a variable to hold the current head state of the linked list and set that to <strong>this.head</strong> which refers to the object created.</p>
+<p>As we are adding a new node to our head we need to set our currenthead in our list as the NextNode to the new value being added in, essentially our new node pushes the current head down so that there is something new pointing to it.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">addToHead</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newHead <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> currentHead <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token operator">=</span> newHead<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>currentHead<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span>currentHead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>We have our method to add a new node into the head of our linked list but linked lists can also add a new node from the tail of a linked list so we need to create a similar method for adding to the tail.</p>
+<p>When we add a new node to our tail we first check if there is any node value currently, if not we set our new node at that location if not we loop through our linked list until we have reached the point where the currentnode we're at has a null value for its next node at that point we create a new node at that point, with the current node we're on pointing to that node. This is because this data structure only keeps track of the head of the list hence the need to traverse this list to add to the tail.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">addToTail</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> tail <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>tail<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tail <span class="token operator">=</span> tail<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      tail<span class="token punctuation">.</span><span class="token method function property-access">setNextNode</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="removing"><a aria-hidden="true" class="anchor-heading" href="#removing"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Removing</h4>
+<p>We have our two methods for adding new nodes into our list but we now need a method to remove a node from the list.</p>
+<p>when we remove a node, we first set a variable to hold the currentNode, and we first check if there is anyvalue at that current node, if there is no value we return from our function. if not we set the current head to the nextnode of the current node and return the data.</p>
+<pre class="language-javascript"><code class="language-javascript"> <span class="token function">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> removedHead <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>removedHead<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token operator">=</span> removedHead<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">return</span> removedHead<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>we can also add a method to be able to see our whole linked list in one command, thats the method for printList it removes the need to have multiple console log methods to print your linked list every time its updated.</p>
+<h4 id="print"><a aria-hidden="true" class="anchor-heading" href="#print"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Print</h4>
+<pre class="language-javascript"><code class="language-javascript">  <span class="token function">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> currentNode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> output <span class="token operator">=</span> <span class="token string">'&#x3C;head> '</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>currentNode <span class="token operator">!==</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      output <span class="token operator">+=</span> currentNode<span class="token punctuation">.</span><span class="token property-access">data</span> <span class="token operator">+</span> <span class="token string">' '</span><span class="token punctuation">;</span>
+      currentNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span><span class="token method function property-access">getNextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    output <span class="token operator">+=</span> <span class="token string">'&#x3C;tail>'</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="example-of-linked-lists"><a aria-hidden="true" class="anchor-heading" href="#example-of-linked-lists"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Example of Linked Lists</h2>
+<p>we have created the necessary classes to implement a LinkedList now we can use those classes to create a linked list by creating an instance of that class.</p>
+<p>our first example consists of creating a simple stringed list of "one" "two" etc.. and we will use the tools to build a list of these string values</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token maybe-class-name">LinkedList</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./LinkedList"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token maybe-class-name">Numbers</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">addToHead</span><span class="token punctuation">(</span><span class="token string">"One"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">addToHead</span><span class="token punctuation">(</span><span class="token string">"Two"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">addToTail</span><span class="token punctuation">(</span><span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">addToTail</span><span class="token punctuation">(</span><span class="token string">"Four"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">removeHead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token maybe-class-name">Numbers</span><span class="token punctuation">.</span><span class="token method function property-access">printList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+The out put of this function will be 
+&#x3C;head> &#x3C;tail>
+&#x3C;head> Two One &#x3C;tail>
+&#x3C;head> Two One Three Four &#x3C;tail>
+&#x3C;head> One Three Four &#x3C;tail>
+
+*/</span>
+</code></pre>
+<hr>
+<h2 id="backlinks"><a aria-hidden="true" class="anchor-heading" href="#backlinks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Backlinks</h2>
+<ul>
+<li><a href="/Dendron/notes/KXNErAkqW3HOHpqS2fK8o">add-lists</a></li>
+<li><a href="/Dendron/notes/BZmdlSFmAqDwFchdgNOpq">create-linked-list</a></li>
+<li><a href="/Dendron/notes/4wtXNaSdo2kxF8TLaswD1">delete-node</a></li>
+<li><a href="/Dendron/notes/fY5pnoriiH8YTyiLFtacG">insert-node</a></li>
+<li><a href="/Dendron/notes/H4RlUx7zA12YiZlshc6W6">longest-streak</a></li>
+<li><a href="/Dendron/notes/zFSvU97guIdPgCPqgy78g">unique-value</a></li>
+<li><a href="/Dendron/notes/G1WYVj4RLmhMPi8bM57JW">zipper-linked-list</a></li>
+</ul>

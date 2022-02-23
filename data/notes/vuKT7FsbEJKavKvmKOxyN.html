@@ -1,0 +1,39 @@
+<h1 id="howsum"><a aria-hidden="true" class="anchor-heading" href="#howsum"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>HowSum</h1>
+<h2 id="question"><a aria-hidden="true" class="anchor-heading" href="#question"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Question</h2>
+<p>Given a target sum and an array of integers, return any combination of array elements that equals the target sum. if there is no combination the function should return null.
+you can use an element of the array as many times as needed, and all elements are positive.</p>
+<h4 id="input"><a aria-hidden="true" class="anchor-heading" href="#input"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>input:</h4>
+<p>target = 7;
+array = [2,4]</p>
+<h4 id="output"><a aria-hidden="true" class="anchor-heading" href="#output"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Output:</h4>
+<p>output = Null</p>
+<h2 id="solution"><a aria-hidden="true" class="anchor-heading" href="#solution"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Solution</h2>
+<p>As we have done previously we can visualize this problem in a form of a tree.
+if we were given a target sum of 7, and an array which contains [5,4,3,7], we can visualize the problem as shown below.
+<img src="/Dendron/assets/images/2022-02-07-12-23-57.png">
+As can be seen in the graph we have three ways of getting our target sum as we have nodes that reach 0.</p>
+<h4 id="javascript"><a aria-hidden="true" class="anchor-heading" href="#javascript"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Javascript</h4>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">howSum</span><span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> mem <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>targetSum <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>targetSum <span class="token operator">&#x3C;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>targetSum <span class="token keyword">in</span> mem<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> mem<span class="token punctuation">[</span>targetSum<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> num <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> remainder <span class="token operator">=</span> targetSum <span class="token operator">-</span> num<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> remainderResult <span class="token operator">=</span> <span class="token function">fourNumberSum</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> remainder<span class="token punctuation">,</span> mem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>remainderResult <span class="token operator">!==</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      mem<span class="token punctuation">[</span>targetSum<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token spread operator">...</span>remainderResult<span class="token punctuation">,</span> num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword control-flow">return</span> mem<span class="token punctuation">[</span>targetSum<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  mem<span class="token punctuation">[</span>targetSum<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">return</span> mem<span class="token punctuation">[</span>targetSum<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="java"><a aria-hidden="true" class="anchor-heading" href="#java"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Java</h4>
+<pre class="language-java"><code class="language-java"></code></pre>
+<h2 id="concepts"><a aria-hidden="true" class="anchor-heading" href="#concepts"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Concepts</h2>
+<p><a href="/Dendron/notes/kI5aQqoWn5mBeryTGwZZT">Recursion</a></p>
+<h2 id="patterns"><a aria-hidden="true" class="anchor-heading" href="#patterns"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patterns</h2>
+<ul>
+<li>Map/Set</li>
+</ul>
